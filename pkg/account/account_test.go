@@ -26,6 +26,11 @@ func TestTableWithdraw(t *testing.T) {
 		expectedBalance float64
 	}{
 		{100.00, 50.00, 50.00},
+		{100.00, 34.65, 65.35},
+		{100.00, 78.21, 21.79},
+		{100.00, 22.34, 77.66},
+		{100.00, 56.94, 43.06},
+		{100.00, 11.45, 88.55},
 	}
 
 	for _, test := range withdrawalTests {
