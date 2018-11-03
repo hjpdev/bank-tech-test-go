@@ -1,18 +1,23 @@
 package account
 
-import "math"
+import (
+	"github.com/shopspring/decimal"
+)
 
 type Account struct {
-	balance float64
+	balance decimal.Decimal
 }
 
 func NewAccount(initialBalance float64) *Account {
 	return &Account{
-		balance: initialBalance,
+		balance: decimal.NewFromFloat(initialBalance),
 	}
 }
 
-func (a *Account) Balance() float64 {
-	bal := math.Floor(a.balance*100) / 100
-	return bal
+func (a *Account) Balance() decimal.Decimal {
+	return a.balance
+}
+
+func (a *Account) Withdraw(amount float64) {
+	a.balance = a.balance.Sub(decimal.NewFromFloat(amount))
 }
