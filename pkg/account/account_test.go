@@ -18,3 +18,21 @@ func TestAccountWithdraw(t *testing.T) {
 		t.Errorf("Test failed -> Expected balance to be 74.50, but was %f", acc.Balance())
 	}
 }
+
+func TestTableWithdraw(t *testing.T) {
+	var withdrawalTests = []struct {
+		initialBalance  float64
+		withdrawal      float64
+		expectedBalance float64
+	}{
+		{100.00, 50.00, 50.00},
+	}
+
+	for _, test := range withdrawalTests {
+		acc := NewAccount(test.initialBalance)
+		acc.Withdraw(test.withdrawal)
+		if result := acc.Balance(); result != test.expectedBalance {
+			t.Errorf("Test failed -> Initial balance: %f; Withdrew: %f, Expected balance: %f; Actual balance: %f", test.initialBalance, test.withdrawal, test.expectedBalance, result)
+		}
+	}
+}

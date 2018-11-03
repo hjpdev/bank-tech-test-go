@@ -1,5 +1,7 @@
 package account
 
+import "math"
+
 type Account struct {
 	balance float64
 }
@@ -11,5 +13,6 @@ func NewAccount(initialBalance float64) *Account {
 }
 
 func (a *Account) Balance() float64 {
-	return a.balance
+	bal := math.Floor(a.balance*100) / 100
+	return bal
 }
