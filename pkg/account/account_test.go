@@ -13,11 +13,13 @@ func TestAccountZeroBalance(t *testing.T) {
 	}
 }
 
-func TestAccountWithdraw(t *testing.T) {
-	acc := NewAccount(100.00)
-	acc.Withdraw(25.50)
-	if acc.Balance().Equal(decimal.NewFromFloat(74.50)) == false {
-		t.Errorf("Test failed -> Expected balance to be 74.50, but was %v", acc.Balance())
+func BenchmarkAccount(b *testing.B) {
+	acc := NewAccount(float64(b.N))
+	for i := 0; i < b.N; i++ {
+		acc.Withdraw(1.00)
+	}
+	if acc.Balance().Equal(decimal.NewFromFloat(0.00)) == false {
+		b.Errorf("Balance wasn't zero: %v", acc.Balance())
 	}
 }
 
