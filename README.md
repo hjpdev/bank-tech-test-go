@@ -22,7 +22,7 @@ for helping me get started.
 
 To run the main file: ``` go run ./cmd/main.go ```s
 To run the tests, go to the folder that contains the tests and: ``` go test -v ```
-To run the benchmark tests, again go to the folder and: ``` go test -bench ```
+To run the benchmark tests, again go to the folder and: ``` go test -bench . ```
 
 ## User Stories
 
