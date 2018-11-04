@@ -1,6 +1,7 @@
 package account
 
 import (
+	"sync"
 	"testing"
 
 	"github.com/shopspring/decimal"
@@ -13,6 +14,7 @@ func TestAccountZeroBalance(t *testing.T) {
 	}
 }
 
+/*
 func BenchmarkAccount(b *testing.B) {
 	acc := NewAccount(float64(b.N))
 	for i := 0; i < b.N; i++ {
@@ -20,6 +22,42 @@ func BenchmarkAccount(b *testing.B) {
 	}
 	if acc.Balance().Equal(decimal.NewFromFloat(0.00)) == false {
 		b.Errorf("Balance wasn't zero: %v", acc.Balance())
+	}
+}
+*/
+
+const WORKERS = 10
+
+func BenchmarkWithdrawals(b *testing.B) {
+	// Skip N = 1
+	if b.N < WORKERS {
+		return
+	}
+
+	acc := NewAccount(float64(b.N))
+
+	gbpPerFounder := b.N / WORKERS
+
+	// WaitGroup structs don't need to be initilised - zero values is ready to use
+	var wg sync.WaitGroup
+
+	for i := 0; i < WORKERS; i++ {
+		// Lets WaitGroup know you're adding a goroutine
+		wg.Add(1)
+		// Spawns off founder worker as a closure
+		go func() {
+			// Marks worker done when function finishes
+			defer wg.Done()
+			for i := 0; i < gbpPerFounder; i++ {
+				acc.Withdraw(1.0)
+			}
+		}()
+	}
+	// Waits for all workers to finish
+	wg.Wait()
+
+	if acc.Balance().Equal(decimal.NewFromFloat(0.00)) == false {
+		b.Errorf("Balance wasn't zero: %v; Iterations: %d", acc.Balance(), b.N)
 	}
 }
 

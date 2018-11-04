@@ -1,4 +1,9 @@
 # bank-tech-test-go
+This is an attempt to do a tech test completed a few weeks earlier in Java, but this time in GoLang.
+Props to Brendon Hogger and his tutorial @ 
+``` https://www.toptal.com/go/go-programming-a-step-by-step-introductory-tutorial
+```
+for helping me get started.
 
 ### Acceptance Criteria
 
@@ -15,7 +20,7 @@
   10/01/2012 || 1000.00 || || 1000.00
 ```
 
-To run the main file: ``` go run ./cmd/main.go ```
+To run the main file: ``` go run ./cmd/main.go ```s
 To run the tests, go to the folder that contains the tests and: ``` go test -v ```
 To run the benchmark tests, again go to the folder and: ``` go test -bench ```
 
@@ -28,7 +33,7 @@ To run the benchmark tests, again go to the folder and: ``` go test -bench ```
 
   As a customer,
   so I can increase my balance,
-  I want to be able to make deposits. 
+  I want to be able to make deposits.
 
   As a customer,
   so I can spend my money,
@@ -40,7 +45,7 @@ To run the benchmark tests, again go to the folder and: ``` go test -bench ```
   
   As a customer,
   so I don't exceed my overdraft,
-  I want to be stopped withdrawing over this amount
+  I want to be stopped withdrawing over this amount.
 
   As a customer,
   so I can see previous transactions,
