@@ -84,6 +84,25 @@ func TestTableWithdraw(t *testing.T) {
 	}
 }
 
+func TestTableWithdrawalLimit(t *testing.T) {
+	var withdrawalLimitTests = []struct {
+		initialBalance float64
+		withdrawal     float64
+	}{
+		{10.00, 20.00},
+		{100.00, 1000.00},
+		{221.21, 221.22},
+		{99.00, 100.00},
+	}
+
+	for _, test := range withdrawalLimitTests {
+		acc := NewAccount(test.initialBalance)
+		if errors := acc.Withdraw(test.withdrawal).Errors(); errors == nil {
+			t.Errorf("Test failed -> Withdrew %f, but balance was only %c, and there was no error...", test.withdrawal, test.initialBalance)
+		}
+	}
+}
+
 func TestTableDeposit(t *testing.T) {
 	var depositTests = []struct {
 		initialBalance  float64
