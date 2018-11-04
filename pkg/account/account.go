@@ -1,6 +1,8 @@
 package account
 
 import (
+	"errors"
+
 	"github.com/shopspring/decimal"
 )
 
@@ -18,8 +20,12 @@ func (a *Account) Balance() decimal.Decimal {
 	return a.balance
 }
 
-func (a *Account) Withdraw(amount float64) {
+func (a *Account) Withdraw(amount float64) error {
+	if decimal.NewFromFloat(amount).GreaterThan(a.balance) {
+		return errors.New("Insufficient Balance")
+	}
 	a.balance = a.balance.Sub(decimal.NewFromFloat(amount))
+	return nil
 }
 
 func (a *Account) Deposit(amount float64) {
