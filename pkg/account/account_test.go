@@ -83,3 +83,27 @@ func TestTableWithdraw(t *testing.T) {
 		}
 	}
 }
+
+func TestTableDeposit(t *testing.T) {
+	var depositTests = []struct {
+		initialBalance  float64
+		deposit         float64
+		expectedBalance decimal.Decimal
+	}{
+		{100.00, 45.45, decimal.NewFromFloat(145.45)},
+		{92.23, 11.11, decimal.NewFromFloat(103.34)},
+		{0.00, 24.67, decimal.NewFromFloat(24.67)},
+		{45.23, 0.01, decimal.NewFromFloat(45.24)},
+		{22.00, 97.65, decimal.NewFromFloat(119.65)},
+		{66.67, 33.33, decimal.NewFromFloat(100.00)},
+		{4.23, 5.77, decimal.NewFromFloat(10.00)},
+	}
+
+	for _, test := range depositTests {
+		acc := NewAccount(test.initialBalance)
+		acc.Deposit(test.deposit)
+		if result := acc.Balance(); result.Equal(test.expectedBalance) == false {
+			t.Errorf("Test failed -> Initial balance: %f; Deposited: %f; Expected balance: %v; Actual balance: %v", test.initialBalance, test.deposit, test.expectedBalance, result)
+		}
+	}
+}

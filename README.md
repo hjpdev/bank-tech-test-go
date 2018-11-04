@@ -17,7 +17,7 @@ Props to Brendon Hogger and his tutorial [here](https://www.toptal.com/go/go-pro
   10/01/2012 || 1000.00 || || 1000.00
 ```
 
-To run the main file: ``` go run ./cmd/main.go ```s
+To run the main file: ``` go run ./cmd/main.go ```
 To run the tests, go to the folder that contains the tests and: ``` go test -v ```
 To run the benchmark tests, again go to the folder and: ``` go test -bench . ```
 
@@ -49,6 +49,6 @@ To run the benchmark tests, again go to the folder and: ``` go test -bench . ```
   I want to be able to view my statement.
   
   As a bank,
-  so we can encourage customers to open accounts,
+  so we can incentivise customers to open accounts,
   we want the ability to open them with money already in.
 ```
