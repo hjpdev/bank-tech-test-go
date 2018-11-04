@@ -18,13 +18,21 @@ Props to Brendon Hogger and his tutorial [here](https://www.toptal.com/go/go-pro
 ```
 
 To copy:
-``` git clone https://github.com/hjpugh/bank-tech-test-go.git ```
+```
+  git clone https://github.com/hjpugh/bank-tech-test-go.git 
+```
 To run the main file: 
-``` go run ./cmd/main.go ```
+```
+  go run ./cmd/main.go
+```
 To run the tests, go to the folder that contains the tests and: 
-``` go test -v ```
+```
+  go test -v
+```
 To run the benchmark tests, again go to the folder and: 
-``` go test -bench . ```
+```
+  go test -bench .
+```
 
 ## User Stories
 
