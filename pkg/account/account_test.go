@@ -97,8 +97,8 @@ func TestTableWithdrawalLimit(t *testing.T) {
 
 	for _, test := range withdrawalLimitTests {
 		acc := NewAccount(test.initialBalance)
-		if errors := acc.Withdraw(test.withdrawal).Errors(); errors == nil {
-			t.Errorf("Test failed -> Withdrew %f, but balance was only %c, and there was no error...", test.withdrawal, test.initialBalance)
+		if acc.Withdraw(test.withdrawal) == nil {
+			t.Errorf("Test failed -> Withdrew %f, but balance was only %v, and there was no error...", test.withdrawal, test.initialBalance)
 		}
 	}
 }

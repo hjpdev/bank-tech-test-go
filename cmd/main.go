@@ -10,4 +10,5 @@ func main() {
 	acc := account.NewAccount(100.00)
 	acc.Withdraw(26.27)
 	fmt.Println(acc.Balance())
+	acc.Withdraw(10000.00)
 }
