@@ -1,9 +1,6 @@
 # bank-tech-test-go
 This is an attempt to do a tech test completed a few weeks earlier in Java, but this time in GoLang.
-Props to Brendon Hogger and his tutorial @ 
-``` https://www.toptal.com/go/go-programming-a-step-by-step-introductory-tutorial
-```
-for helping me get started.
+Props to Brendon Hogger and his tutorial [here](https://www.toptal.com/go/go-programming-a-step-by-step-introductory-tutorial) for helping me get started.
 
 ### Acceptance Criteria
 
