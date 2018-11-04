@@ -21,3 +21,7 @@ func (a *Account) Balance() decimal.Decimal {
 func (a *Account) Withdraw(amount float64) {
 	a.balance = a.balance.Sub(decimal.NewFromFloat(amount))
 }
+
+func (a *Account) Deposit(amount float64) {
+	a.balance = a.balance.Add(decimal.NewFromFloat(amount))
+}
