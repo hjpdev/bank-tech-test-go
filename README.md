@@ -15,20 +15,24 @@
   10/01/2012 || 1000.00 || || 1000.00
 ```
 
+To run the main file: ``` go run ./cmd/main.go ```
+To run the tests, go to the folder that contains the tests and: ``` go test -v ```
+To run the benchmark tests, again go to the folder and: ``` go test -bench ```
+
 ## User Stories
 
 ```
   As a customer,
   so I know how much money I have,
-  I want to be able to see my balance.
+  I want to be able to see my balance. ✔
 
   As a customer,
   so I can increase my balance,
-  I want to be able to make deposits.
+  I want to be able to make deposits. 
 
   As a customer,
   so I can spend my money,
-  I want to be able to make withdrawals.
+  I want to be able to make withdrawals. ✔
   
   As a customer,
   so I can pay for unpredicted expenditures,
